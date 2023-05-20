@@ -1,4 +1,7 @@
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
+
+{% comment %}
+
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
 {{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
@@ -30,8 +33,25 @@
   }
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  {%- liquid
+<footer role="contentinfo" class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+
+	<div class="wrap footer__wrap">
+
+		<div class="emblem" aria-label="Home">
+
+			<a href="/" aria-current="page" data-current="true" class="emblem__link">
+
+				<img src="/assets/img/emblem.png" srcset="/assets/img/emblem.png, /assets/img/emblem@2x.png 2x" width="40" height="47" alt="Trinity Insight" class="emblem__image" />
+
+			</a>
+
+		</div>
+
+		<p class="copyright">&copy; 2023 Trinity Insight, LLC. All Rights Reserved.</p>
+
+	</div>
+
+	{%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
       assign has_social_icons = false
@@ -375,6 +395,8 @@
   </div>
 </footer>
 
+<script src="/assets/js/scripts.js" defer></script>
+
 {%- if section.settings.enable_country_selector or section.settings.enable_language_selector -%}
   <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
@@ -626,3 +648,5 @@
   }
 }
 {% endschema %}
+
+{% endcomment %}

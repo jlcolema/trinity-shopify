@@ -1,0 +1,355 @@
+{% comment %}
+
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width page-width--narrow section-{{ section.id }}-padding">
+  <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {{ page.content }}
+  </div>
+</div>
+
+{% endcomment %}
+
+{% comment %}
+
+<section class="section section__overview">
+
+	<div class="inner-wrap overview__inner-wrap">
+
+		<header class="section__header">
+
+			<h1 class="section__heading">Gain new insight to grow digital revenues faster.</h1>
+
+			<p class="section__description">Sign up for your <b>free</b> Website Strategy Session ($795 value)</p>
+
+		</header>
+
+		<div class="overview__details">
+
+			<p>In a <b>free</b> consultation discussion with our CEO, <a href="#">Craig Smith</a>, you will receive a live website review, complete with our toolsets, to help you understand what digital growth opportunities exist in your business.</p>
+
+			<p>Within your strategy session you will receive:</p>
+
+			<ul>
+
+				<li>An expert analysis of your eCommerce store or website.</li>
+
+				<li>Diagnostic SEO Crawl Report</li>
+
+				<li>Site Spead & Performance Assessment</li>
+
+				<li>User Experience Review and Recommendations</li>
+
+				<li>Email &amp; Marketing Automation Review</li>
+
+				<li>No Obligations &amp; 100% Free</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	<div class="overview__form">
+
+		<form name="strategy" method="post" data-netlify="true" class="form" aria-label="Request a Session">
+
+			<legend class="form__heading"><b>Free</b> Website Strategy Session</legend>
+
+			<fieldset class="form__fieldset">
+
+				<ol class="form__list">
+
+					<li class="form__item">
+
+						<label for="first-name" class="form__label">First Name</label>
+
+						<input type="text" name="first-name" value="" id="first-name" class="form__input" />
+
+					</li>
+
+					<li class="form__item">
+
+						<label for="last-name" class="form__label">Last Name</label>
+
+						<input type="text" name="last-name" value="" id="last-name" class="form__input" />
+
+					</li>
+
+					<li class="form__item">
+
+						<label for="website" class="form__label">Website</label>
+
+						<input type="text" name="website" value="" id="website" class="form__input" />
+
+					</li>
+
+					<li class="form__item">
+
+						<label for="email" class="form__label">Email *</label>
+
+						<input type="email" name="email" value="" id="email" class="form__input" required />
+
+					</li>
+
+					<li class="form__item">
+
+						<label for="phone-number" class="form__label">Phone Number</label>
+
+						<input type="tel" name="phone-number" value="" id="phone-number" class="form__input" />
+
+					</li>
+
+				</ol>
+
+				<div class="form__button">
+
+					<button type="submit">Request Session</button>
+
+				</fieldset>
+
+			</fieldset>
+
+		</form>
+
+	</div>
+
+</section>
+
+<section class="section section__together">
+
+	<header class="section__header">
+
+		<h2 class="section__heading">We make working together easy.</h2>
+
+	</header>
+
+	<ol class="together__list">
+
+		<li class="together__item">
+
+			<img src="/media/vid-chat.png" srcset="/media/vid-chat.png, /media/vid-chat@2x.png 2x" width="424" height="139" alt="An illustration showing an icon that includes a speech bubble and a play button." loading="lazy" class="together__image" />
+
+			<div class="together__detail">
+
+				<h3 class="together__heading">30 Minute Video Conversation</h3>
+
+				<p class="together__description">Get started with a free consultation to help us understand where our team can best help you build and grow your online business.</p>
+
+			</div>
+
+		</li>
+
+		<li class="together__item">
+
+			<img src="/media/roadmap.png" srcset="/media/roadmap.png, /media/roadmap@2x.png 2x" width="424" height="139" alt="An illustration showing repeating squiggly lines." loading="lazy" class="together__image" />
+
+			<div class="together__detail">
+
+				<h3 class="together__heading">Diagnostic Roadmap</h3>
+
+				<p class="together__description">Within a week we'll diagnose your biggest opportunities and build a custom roadmap to optimize your ecommerce experience.</p>
+
+			</div>
+
+		</li>
+
+		<li class="together__item">
+
+			<img src="/media/growth.png" srcset="/media/growth.png, /media/growth@2x.png 2x" width="424" height="139" alt="An illustration showing a group of five arrow that grow taller from left to right." loading="lazy" class="together__image" />
+
+			<div class="together__detail">
+
+				<h3 class="together__heading">Growth Services</h3>
+
+				<p class="together__description">Our team will start immediately taking action to make improvements and deliver a brand experience that drives lifetime value.</p>
+
+			</div>
+
+		</li>
+
+	</ol>
+
+</section>
+
+<section class="section section__trusted">
+
+	<header class="section__header">
+
+		<h3 class="section__heading">Trusted By:</h3>
+
+	</header>
+
+	<div class="carousel__container">
+
+		<div class="glide hero">
+
+			<div class="glide__track" data-glide-el="track">
+
+				<ul class="trusted__list glide__slides">
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-01.png" srcset="/media/logo-01.png, /media/logo-01@2x.png" width="186" height="97" alt="Company 01" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-02.png" srcset="/media/logo-02.png, /media/logo-02@2x.png" width="186" height="97" alt="Company 02" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-03.png" srcset="/media/logo-03.png, /media/logo-03@2x.png" width="186" height="97" alt="Company 03" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-04.png" srcset="/media/logo-04.png, /media/logo-04@2x.png" width="186" height="97" alt="Company 04" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-05.png" srcset="/media/logo-05.png, /media/logo-05@2x.png" width="186" height="97" alt="Company 05" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-06.png" srcset="/media/logo-06.png, /media/logo-06@2x.png" width="186" height="97" alt="Company 06" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-07.png" srcset="/media/logo-07.png, /media/logo-07@2x.png" width="186" height="97" alt="Company 07" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+					<li class="trusted__item glide__slide">
+
+						<img src="/media/logo-08.png" srcset="/media/logo-08.png, /media/logo-08@2x.png" width="186" height="97" alt="Company 08" loading="lazy" class="trusted__logo" />
+
+					</li>
+
+				</ul>
+
+			</div>
+
+			<div class="glide__arrows" data-glide-el="controls">
+
+				<button class="glide__arrow glide__arrow--prev" data-glide-dir="<">
+
+					<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.63 45.02">
+						<polygon points="22.51 0 24.63 2.12 4.24 22.51 24.63 42.9 22.51 45.02 0 22.51 22.51 0" style="fill: var(--color-theme-light-blue)" />
+					</svg>
+
+					<span class="label visually-hidden">Previous</span>
+
+				</button>
+
+				<button class="glide__arrow glide__arrow--next" data-glide-dir=">">
+
+					<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.63 45.02">
+						<polygon points="2.12 45.02 0 42.9 20.39 22.51 0 2.12 2.12 0 24.63 22.51 2.12 45.02" style="fill: var(--color-theme-light-blue)" />
+					</svg>
+
+					<span class="label visually-hidden">Next</span>
+
+				</button>
+
+			</div>
+
+			<div class="glide__bullets" data-glide-el="controls[nav]">
+				<button class="glide__bullet" data-glide-dir="=0">
+					<span class="visually-hidden">1</span>
+				</button>
+				<button class="glide__bullet" data-glide-dir="=1">
+					<span class="visually-hidden">2</span>
+				</button>
+				<button class="glide__bullet" data-glide-dir="=2">
+					<span class="visually-hidden">3</span>
+				</button>
+				<button class="glide__bullet" data-glide-dir="=3">
+					<span class="visually-hidden">4</span>
+				</button>
+				<button class="glide__bullet" data-glide-dir="=4">
+					<span class="visually-hidden">5</span>
+				</button>
+				<button class="glide__bullet" data-glide-dir="=5">
+					<span class="visually-hidden">6</span>
+				</button>
+				<button class="glide__bullet" data-glide-dir="=6">
+					<span class="visually-hidden">7</span>
+				</button>
+				<button class="glide__bullet" data-glide-dir="=7">
+					<span class="visually-hidden">8</span>
+				</button>
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
+
+{% endcomment %}
+
+{% comment %}
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
+
+{% endcomment %}

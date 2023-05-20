@@ -1,323 +1,765 @@
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="">
-    <link rel="canonical" href="{{ canonical_url }}">
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-    {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-    {%- endif -%}
+<html lang="en">
 
-    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {%- endunless -%}
+	<head>
 
-    <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
-    </title>
+		<meta charset="utf-8" />
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
-    {% endif %}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% render 'meta-tags' %}
+		<title>Gain New Insight to Grow Digital Revenues Faster &mdash; Trinity Insight</title>
 
-    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    {%- if settings.animations_reveal_on_scroll -%}
-      <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+		<meta name="description" content="In a free consultation discussion with our CEO, Craig Smith, you will receive a live website review, complete with our toolsets, to help you understand what digital growth opportunities exist in your business." />
 
-    {{ content_for_header }}
+		<link rel="home" href="https://trinity-landing-page.netlify.app" />
+		<link rel="canonical" href="https://trinity-landing-page.netlify.app" />
 
-    {%- liquid
-      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
-    %}
+		<meta name="theme-color" content="#2d394a" />
 
-    {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" href="/assets/icon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-      {% for scheme in settings.color_schemes -%}
-        {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
-        {% if forloop.index == 1 -%}
-          :root,
-        {%- endif %}
-        .color-{{ scheme.id }} {
-          --color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
-        {% if scheme.settings.background_gradient != empty %}
-          --gradient-background: {{ scheme.settings.background_gradient }};
-        {% else %}
-          --gradient-background: {{ scheme.settings.background }};
-        {% endif %}
-        --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
-        --color-shadow: {{ scheme.settings.shadow.red }},{{ scheme.settings.shadow.green }},{{ scheme.settings.shadow.blue }};
-        --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
-        --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
-        --color-secondary-button: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
-        --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
-        --color-link: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
-        --color-badge-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
-        --color-badge-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
-        --color-badge-border: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
-        --payment-terms-background-color: rgb({{ scheme.settings.background.rgb }});
-      }
-      {% endfor %}
+		<link rel="manifest" href="/manifest.json" />
 
-      {{ scheme_classes | prepend: 'body' }} {
-        color: rgba(var(--color-foreground), 0.75);
-        background-color: rgb(var(--color-background));
-      }
+		<!-- Facebook -->
 
-      :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-body-style: {{ settings.type_body_font.style }};
-        --font-body-weight: {{ settings.type_body_font.weight }};
-        --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+		<meta property="og:title" content="Gain New Insight to Grow Digital Revenues Faster" />
+		<meta property="og:description" content="In a free consultation discussion with our CEO, Craig Smith, you will receive a live website review, complete with our toolsets, to help you understand what digital growth opportunities exist in your business." />
+		<meta property="og:url" content="https://trinity-landing-page.netlify.app" />
+		<meta property="og:image" content="/assets/facebook-image.png" />
+		<meta property="og:locale" content="en" />
+		<meta property="og:type" content="website" />
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
+		<!-- Twitter -->
 
-        --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
-        --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+		<meta name="twitter:title" content="Gain New Insight to Grow Digital Revenues Faster" />
+		<meta name="twitter:description" content="In a free consultation discussion with our CEO, Craig Smith, you will receive a live website review, complete with our toolsets, to help you understand what digital growth opportunities exist in your business." />
+		<meta name="twitter:url" content="https://trinity-landing-page.netlify.app" />
+		<meta name="twitter:image" content="/assets/twitter-image.png" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@" />
+		<meta name="twitter:creator" content="@" />
 
-        --media-padding: {{ settings.media_padding }}px;
-        --media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
-        --media-border-width: {{ settings.media_border_thickness }}px;
-        --media-radius: {{ settings.media_radius }}px;
-        --media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
-        --media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
-        --media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
-        --media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
-        --media-shadow-visible: {% if settings.media_shadow_opacity > 0 %}1{% else %}0{% endif %};
+		<link rel="pingback" href="https://webmention.io/trinity-landing-page.netlify.app/xmlrpc" />
+		<link rel="webmention" href="https://webmention.io/trinity-landing-page.netlify.app/webmention" />
 
-        --page-width: {{ settings.page_width | divided_by: 10 }}rem;
-        --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        --product-card-image-padding: {{ settings.card_image_padding | divided_by: 10.0 }}rem;
-        --product-card-corner-radius: {{ settings.card_corner_radius | divided_by: 10.0 }}rem;
-        --product-card-text-alignment: {{ settings.card_text_alignment }};
-        --product-card-border-width: {{ settings.card_border_thickness | divided_by: 10.0 }}rem;
-        --product-card-border-opacity: {{ settings.card_border_opacity | divided_by: 100.0 }};
-        --product-card-shadow-opacity: {{ settings.card_shadow_opacity | divided_by: 100.0 }};
-        --product-card-shadow-visible: {% if settings.card_shadow_opacity > 0 %}1{% else %}0{% endif %};
-        --product-card-shadow-horizontal-offset: {{ settings.card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
-        --product-card-shadow-vertical-offset: {{ settings.card_shadow_vertical_offset | divided_by: 10.0 }}rem;
-        --product-card-shadow-blur-radius: {{ settings.card_shadow_blur | divided_by: 10.0 }}rem;
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" />
 
-        --collection-card-image-padding: {{ settings.collection_card_image_padding | divided_by: 10.0 }}rem;
-        --collection-card-corner-radius: {{ settings.collection_card_corner_radius | divided_by: 10.0 }}rem;
-        --collection-card-text-alignment: {{ settings.collection_card_text_alignment }};
-        --collection-card-border-width: {{ settings.collection_card_border_thickness | divided_by: 10.0 }}rem;
-        --collection-card-border-opacity: {{ settings.collection_card_border_opacity | divided_by: 100.0 }};
-        --collection-card-shadow-opacity: {{ settings.collection_card_shadow_opacity | divided_by: 100.0 }};
-        --collection-card-shadow-visible: {% if settings.collection_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
-        --collection-card-shadow-horizontal-offset: {{ settings.collection_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
-        --collection-card-shadow-vertical-offset: {{ settings.collection_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
-        --collection-card-shadow-blur-radius: {{ settings.collection_card_shadow_blur | divided_by: 10.0 }}rem;
+		<link rel="preload" as="style" href="/assets/styles.css" />
+		<link rel="stylesheet" href="/assets/styles.css" />
 
-        --blog-card-image-padding: {{ settings.blog_card_image_padding | divided_by: 10.0 }}rem;
-        --blog-card-corner-radius: {{ settings.blog_card_corner_radius | divided_by: 10.0 }}rem;
-        --blog-card-text-alignment: {{ settings.blog_card_text_alignment }};
-        --blog-card-border-width: {{ settings.blog_card_border_thickness | divided_by: 10.0 }}rem;
-        --blog-card-border-opacity: {{ settings.blog_card_border_opacity | divided_by: 100.0 }};
-        --blog-card-shadow-opacity: {{ settings.blog_card_shadow_opacity | divided_by: 100.0 }};
-        --blog-card-shadow-visible: {% if settings.blog_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
-        --blog-card-shadow-horizontal-offset: {{ settings.blog_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
-        --blog-card-shadow-vertical-offset: {{ settings.blog_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
-        --blog-card-shadow-blur-radius: {{ settings.blog_card_shadow_blur | divided_by: 10.0 }}rem;
+	</head>
 
-        --badge-corner-radius: {{ settings.badge_corner_radius | divided_by: 10.0 }}rem;
+	<body>
 
-        --popup-border-width: {{ settings.popup_border_thickness }}px;
-        --popup-border-opacity: {{ settings.popup_border_opacity | divided_by: 100.0 }};
-        --popup-corner-radius: {{ settings.popup_corner_radius }}px;
-        --popup-shadow-opacity: {{ settings.popup_shadow_opacity | divided_by: 100.0 }};
-        --popup-shadow-horizontal-offset: {{ settings.popup_shadow_horizontal_offset }}px;
-        --popup-shadow-vertical-offset: {{ settings.popup_shadow_vertical_offset }}px;
-        --popup-shadow-blur-radius: {{ settings.popup_shadow_blur }}px;
+		<a href="#main" class="skip-link screen-reader-only">Skip to main content.</a>
 
-        --drawer-border-width: {{ settings.drawer_border_thickness }}px;
-        --drawer-border-opacity: {{ settings.drawer_border_opacity | divided_by: 100.0 }};
-        --drawer-shadow-opacity: {{ settings.drawer_shadow_opacity | divided_by: 100.0 }};
-        --drawer-shadow-horizontal-offset: {{ settings.drawer_shadow_horizontal_offset }}px;
-        --drawer-shadow-vertical-offset: {{ settings.drawer_shadow_vertical_offset }}px;
-        --drawer-shadow-blur-radius: {{ settings.drawer_shadow_blur }}px;
+		<header role="banner" id="header" class="header">
 
-        --spacing-sections-desktop: {{ settings.spacing_sections }}px;
-        --spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 }}{% endif %}px;
+			<div class="wrap header__wrap">
 
-        --grid-desktop-vertical-spacing: {{ settings.spacing_grid_vertical }}px;
-        --grid-desktop-horizontal-spacing: {{ settings.spacing_grid_horizontal }}px;
-        --grid-mobile-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 2 }}px;
-        --grid-mobile-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 2 }}px;
+				{{ content_for_header }}
 
-        --text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
-        --text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px;
-        --text-boxes-radius: {{ settings.text_boxes_radius }}px;
-        --text-boxes-shadow-opacity: {{ settings.text_boxes_shadow_opacity | divided_by: 100.0 }};
-        --text-boxes-shadow-visible: {% if settings.text_boxes_shadow_opacity > 0 %}1{% else %}0{% endif %};
-        --text-boxes-shadow-horizontal-offset: {{ settings.text_boxes_shadow_horizontal_offset }}px;
-        --text-boxes-shadow-vertical-offset: {{ settings.text_boxes_shadow_vertical_offset }}px;
-        --text-boxes-shadow-blur-radius: {{ settings.text_boxes_shadow_blur }}px;
+				<div class="logo" aria-label="Home">
 
-        --buttons-radius: {{ settings.buttons_radius }}px;
-        --buttons-radius-outset: {% if settings.buttons_radius > 0 %}{{ settings.buttons_radius | plus: settings.buttons_border_thickness }}{% else %}0{% endif %}px;
-        --buttons-border-width: {% if settings.buttons_border_opacity > 0 %}{{ settings.buttons_border_thickness }}{% else %}0{% endif %}px;
-        --buttons-border-opacity: {{ settings.buttons_border_opacity | divided_by: 100.0 }};
-        --buttons-shadow-opacity: {{ settings.buttons_shadow_opacity | divided_by: 100.0 }};
-        --buttons-shadow-visible: {% if settings.buttons_shadow_opacity > 0 %}1{% else %}0{% endif %};
-        --buttons-shadow-horizontal-offset: {{ settings.buttons_shadow_horizontal_offset }}px;
-        --buttons-shadow-vertical-offset: {{ settings.buttons_shadow_vertical_offset }}px;
-        --buttons-shadow-blur-radius: {{ settings.buttons_shadow_blur }}px;
-        --buttons-border-offset: {% if settings.buttons_radius > 0 or settings.buttons_shadow_opacity > 0 %}0.3{% else %}0{% endif %}px;
+					<a href="/" aria-current="page" data-current="true" class="logo__link">
 
-        --inputs-radius: {{ settings.inputs_radius }}px;
-        --inputs-border-width: {{ settings.inputs_border_thickness }}px;
-        --inputs-border-opacity: {{ settings.inputs_border_opacity | divided_by: 100.0 }};
-        --inputs-shadow-opacity: {{ settings.inputs_shadow_opacity | divided_by: 100.0 }};
-        --inputs-shadow-horizontal-offset: {{ settings.inputs_shadow_horizontal_offset }}px;
-        --inputs-margin-offset: {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_opacity > 0 %}{{ settings.inputs_shadow_vertical_offset | abs }}{% else %}0{% endif %}px;
-        --inputs-shadow-vertical-offset: {{ settings.inputs_shadow_vertical_offset }}px;
-        --inputs-shadow-blur-radius: {{ settings.inputs_shadow_blur }}px;
-        --inputs-radius-outset: {% if settings.inputs_radius > 0 %}{{ settings.inputs_radius | plus: settings.inputs_border_thickness }}{% else %}0{% endif %}px;
+						<img src="/assets/logo.png" srcset="/assets/logo.png, /assets/logo@2x.png 2x" width="215" height="50" alt="Trinity Insight" class="logo__image" />
 
-        --variant-pills-radius: {{ settings.variant_pills_radius }}px;
-        --variant-pills-border-width: {{ settings.variant_pills_border_thickness }}px;
-        --variant-pills-border-opacity: {{ settings.variant_pills_border_opacity | divided_by: 100.0 }};
-        --variant-pills-shadow-opacity: {{ settings.variant_pills_shadow_opacity | divided_by: 100.0 }};
-        --variant-pills-shadow-horizontal-offset: {{ settings.variant_pills_shadow_horizontal_offset }}px;
-        --variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
-        --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
-      }
+					</a>
 
-      *,
-      *::before,
-      *::after {
-        box-sizing: inherit;
-      }
+				</div>
 
-      html {
-        box-sizing: border-box;
-        font-size: calc(var(--font-body-scale) * 62.5%);
-        height: 100%;
-      }
+				<p class="call-us">Give us a call! <a href="tel:1-866-535-8807" class="call-us__link">866-535-8807</a></p>
 
-      body {
-        display: grid;
-        grid-template-rows: auto auto 1fr auto;
-        grid-template-columns: 100%;
-        min-height: 100%;
-        margin: 0;
-        font-size: 1.5rem;
-        letter-spacing: 0.06rem;
-        line-height: calc(1 + 0.8 / var(--font-body-scale));
-        font-family: var(--font-body-family);
-        font-style: var(--font-body-style);
-        font-weight: var(--font-body-weight);
-      }
+			</div>
 
-      @media screen and (min-width: 750px) {
-        body {
-          font-size: 1.6rem;
-        }
-      }
-    {% endstyle %}
+		</header>
 
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+		<main role="main" id="main" class="main">
 
-    {%- unless settings.type_body_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-    {%- endunless -%}
+			<div class="wrap main__wrap">
 
-    {%- if settings.predictive_search_enabled -%}
-      <link
-        rel="stylesheet"
-        href="{{ 'component-predictive-search.css' | asset_url }}"
-        media="print"
-        onload="this.media='all'"
-      >
-    {%- endif -%}
+				{{ content_for_layout }}
 
-    <script>
-      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
-      if (Shopify.designMode) {
-        document.documentElement.classList.add('shopify-design-mode');
-      }
-    </script>
-  </head>
+				<section class="section section__overview">
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ 'accessibility.skip_to_text' | t }}
-    </a>
+					<div class="inner-wrap overview__inner-wrap">
 
-    {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'cart-drawer' -%}
-    {%- endif -%}
+						<header class="section__header">
 
-    {% sections 'header-group' %}
+							<h1 class="section__heading">Gain new insight to grow digital revenues faster.</h1>
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+							<p class="section__description">Sign up for your <b>free</b> Website Strategy Session ($795 value)</p>
 
-    {% sections 'footer-group' %}
+						</header>
 
-    <ul hidden>
-      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
-      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
-    </ul>
+						<div class="overview__details">
 
-    <script>
-      window.shopUrl = '{{ request.origin }}';
-      window.routes = {
-        cart_add_url: '{{ routes.cart_add_url }}',
-        cart_change_url: '{{ routes.cart_change_url }}',
-        cart_update_url: '{{ routes.cart_update_url }}',
-        cart_url: '{{ routes.cart_url }}',
-        predictive_search_url: '{{ routes.predictive_search_url }}',
-      };
+							<p>In a <b>free</b> consultation discussion with our CEO, <a href="#">Craig Smith</a>, you will receive a live website review, complete with our toolsets, to help you understand what digital growth opportunities exist in your business.</p>
 
-      window.cartStrings = {
-        error: `{{ 'sections.cart.cart_error' | t }}`,
-        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`,
-      };
+							<p>Within your strategy session you will receive:</p>
 
-      window.variantStrings = {
-        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
-        soldOut: `{{ 'products.product.sold_out' | t }}`,
-        unavailable: `{{ 'products.product.unavailable' | t }}`,
-        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
-      };
+							<ul>
 
-      window.accessibilityStrings = {
-        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
-        shareSuccess: `{{ 'general.share.success_message' | t }}`,
-        pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
-        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
-      };
-    </script>
+								<li>An expert analysis of your eCommerce store or website.</li>
 
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
-  </body>
+								<li>Diagnostic SEO Crawl Report</li>
+
+								<li>Site Spead & Performance Assessment</li>
+
+								<li>User Experience Review and Recommendations</li>
+
+								<li>Email &amp; Marketing Automation Review</li>
+
+								<li>No Obligations &amp; 100% Free</li>
+
+							</ul>
+
+						</div>
+
+					</div>
+
+					<div class="overview__form">
+
+						<form name="strategy" method="post" data-netlify="true" class="form" aria-label="Request a Session">
+
+							<legend class="form__heading"><b>Free</b> Website Strategy Session</legend>
+
+							<fieldset class="form__fieldset">
+
+								<ol class="form__list">
+
+									<li class="form__item">
+
+										<label for="first-name" class="form__label">First Name</label>
+
+										<input type="text" name="first-name" value="" id="first-name" class="form__input" />
+
+									</li>
+
+									<li class="form__item">
+
+										<label for="last-name" class="form__label">Last Name</label>
+
+										<input type="text" name="last-name" value="" id="last-name" class="form__input" />
+
+									</li>
+
+									<li class="form__item">
+
+										<label for="website" class="form__label">Website</label>
+
+										<input type="text" name="website" value="" id="website" class="form__input" />
+
+									</li>
+
+									<li class="form__item">
+
+										<label for="email" class="form__label">Email *</label>
+
+										<input type="email" name="email" value="" id="email" class="form__input" required />
+
+									</li>
+
+									<li class="form__item">
+
+										<label for="phone-number" class="form__label">Phone Number</label>
+
+										<input type="tel" name="phone-number" value="" id="phone-number" class="form__input" />
+
+									</li>
+
+								</ol>
+
+								<div class="form__button">
+
+									<button type="submit">Request Session</button>
+
+								</fieldset>
+
+							</fieldset>
+
+						</form>
+
+					</div>
+
+				</section>
+
+				<section class="section section__together">
+
+					<header class="section__header">
+
+						<h2 class="section__heading">We make working together easy.</h2>
+
+					</header>
+
+					<ol class="together__list">
+
+						<li class="together__item">
+
+							<img src="/assets/vid-chat.png" srcset="/assets/vid-chat.png, /assets/vid-chat@2x.png 2x" width="424" height="139" alt="An illustration showing an icon that includes a speech bubble and a play button." loading="lazy" class="together__image" />
+
+							<div class="together__detail">
+
+								<h3 class="together__heading">30 Minute Video Conversation</h3>
+
+								<p class="together__description">Get started with a free consultation to help us understand where our team can best help you build and grow your online business.</p>
+
+							</div>
+
+						</li>
+
+						<li class="together__item">
+
+							<img src="/assets/roadmap.png" srcset="/assets/roadmap.png, /assets/roadmap@2x.png 2x" width="424" height="139" alt="An illustration showing repeating squiggly lines." loading="lazy" class="together__image" />
+
+							<div class="together__detail">
+
+								<h3 class="together__heading">Diagnostic Roadmap</h3>
+
+								<p class="together__description">Within a week we'll diagnose your biggest opportunities and build a custom roadmap to optimize your ecommerce experience.</p>
+
+							</div>
+
+						</li>
+
+						<li class="together__item">
+
+							<img src="/assets/growth.png" srcset="/assets/growth.png, /assets/growth@2x.png 2x" width="424" height="139" alt="An illustration showing a group of five arrow that grow taller from left to right." loading="lazy" class="together__image" />
+
+							<div class="together__detail">
+
+								<h3 class="together__heading">Growth Services</h3>
+
+								<p class="together__description">Our team will start immediately taking action to make improvements and deliver a brand experience that drives lifetime value.</p>
+
+							</div>
+
+						</li>
+
+					</ol>
+
+				</section>
+
+				<section class="section section__trusted">
+
+					<header class="section__header">
+
+						<h3 class="section__heading">Trusted By:</h3>
+
+					</header>
+
+					<div class="carousel__container">
+
+						<div class="glide hero">
+
+							<div class="glide__track" data-glide-el="track">
+
+								<ul class="trusted__list glide__slides">
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-01.png" srcset="/assets/logo-01.png, /assets/logo-01@2x.png" width="186" height="97" alt="Company 01" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-02.png" srcset="/assets/logo-02.png, /assets/logo-02@2x.png" width="186" height="97" alt="Company 02" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-03.png" srcset="/assets/logo-03.png, /assets/logo-03@2x.png" width="186" height="97" alt="Company 03" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-04.png" srcset="/assets/logo-04.png, /assets/logo-04@2x.png" width="186" height="97" alt="Company 04" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-05.png" srcset="/assets/logo-05.png, /assets/logo-05@2x.png" width="186" height="97" alt="Company 05" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-06.png" srcset="/assets/logo-06.png, /assets/logo-06@2x.png" width="186" height="97" alt="Company 06" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-07.png" srcset="/assets/logo-07.png, /assets/logo-07@2x.png" width="186" height="97" alt="Company 07" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+									<li class="trusted__item glide__slide">
+
+										<img src="/assets/logo-08.png" srcset="/assets/logo-08.png, /assets/logo-08@2x.png" width="186" height="97" alt="Company 08" loading="lazy" class="trusted__logo" />
+
+									</li>
+
+								</ul>
+
+							</div>
+
+							<div class="glide__arrows" data-glide-el="controls">
+
+								<button class="glide__arrow glide__arrow--prev" data-glide-dir="<">
+
+									<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.63 45.02">
+										<polygon points="22.51 0 24.63 2.12 4.24 22.51 24.63 42.9 22.51 45.02 0 22.51 22.51 0" style="fill: var(--color-theme-light-blue)" />
+									</svg>
+
+									<span class="label visually-hidden">Previous</span>
+
+								</button>
+
+								<button class="glide__arrow glide__arrow--next" data-glide-dir=">">
+
+									<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.63 45.02">
+										<polygon points="2.12 45.02 0 42.9 20.39 22.51 0 2.12 2.12 0 24.63 22.51 2.12 45.02" style="fill: var(--color-theme-light-blue)" />
+									</svg>
+
+									<span class="label visually-hidden">Next</span>
+
+								</button>
+
+							</div>
+
+							<div class="glide__bullets" data-glide-el="controls[nav]">
+								<button class="glide__bullet" data-glide-dir="=0">
+									<span class="visually-hidden">1</span>
+								</button>
+								<button class="glide__bullet" data-glide-dir="=1">
+									<span class="visually-hidden">2</span>
+								</button>
+								<button class="glide__bullet" data-glide-dir="=2">
+									<span class="visually-hidden">3</span>
+								</button>
+								<button class="glide__bullet" data-glide-dir="=3">
+									<span class="visually-hidden">4</span>
+								</button>
+								<button class="glide__bullet" data-glide-dir="=4">
+									<span class="visually-hidden">5</span>
+								</button>
+								<button class="glide__bullet" data-glide-dir="=5">
+									<span class="visually-hidden">6</span>
+								</button>
+								<button class="glide__bullet" data-glide-dir="=6">
+									<span class="visually-hidden">7</span>
+								</button>
+								<button class="glide__bullet" data-glide-dir="=7">
+									<span class="visually-hidden">8</span>
+								</button>
+							</div>
+
+						</div>
+
+					</div>
+
+				</section>
+
+			</div>
+
+		</main>
+
+		<footer role="contentinfo" class="footer">
+
+			<div class="wrap footer__wrap">
+
+				<div class="emblem" aria-label="Home">
+
+					<a href="/" aria-current="page" data-current="true" class="emblem__link">
+
+						<img src="/assets/emblem.png" srcset="/assets/emblem.png, /assets/emblem@2x.png 2x" width="40" height="47" alt="Trinity Insight" class="emblem__image" />
+
+					</a>
+
+				</div>
+
+				<p class="copyright">&copy; 2023 Trinity Insight, LLC. All Rights Reserved.</p>
+
+			</div>
+
+		</footer>
+
+		<script src="/assets/scripts.js" defer></script>
+
+	</body>
+
 </html>
+
+{% comment %}
+
+<!doctype html>
+
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+
+	<head>
+
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>
+			{{ page_title }}
+			{%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+			{%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+			{%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+		</title>
+
+		{% if page_description %}
+			<meta name="description" content="{{ page_description | escape }}" />
+		{% endif %}
+
+		<link rel="home" href="{{ canonical_url }}" />
+		<link rel="canonical" href="{{ canonical_url }}" />
+
+		<meta name="theme-color" content="#2d394a" />
+
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+		<link rel="manifest" href="/manifest.json" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" />
+
+		<link rel="preload" as="style" href="/assets/css/styles.css" />
+		<link rel="stylesheet" href="/assets/css/styles.css" />
+
+
+		<!-- Review -->
+
+		<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+		{%- if settings.favicon != blank -%}
+			<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+		{%- endif -%}
+
+		{%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+			<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+		{%- endunless -%}
+
+		{% render 'meta-tags' %}
+
+		<script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+		<script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+		<script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+		{%- if settings.animations_reveal_on_scroll -%}
+			<script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
+		{%- endif -%}
+
+		{{ content_for_header }}
+
+		{%- liquid
+			assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+			assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+			assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+		%}
+
+		{% style %}
+			{{ settings.type_body_font | font_face: font_display: 'swap' }}
+			{{ body_font_bold | font_face: font_display: 'swap' }}
+			{{ body_font_italic | font_face: font_display: 'swap' }}
+			{{ body_font_bold_italic | font_face: font_display: 'swap' }}
+			{{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+			{% for scheme in settings.color_schemes -%}
+				{% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
+				{% if forloop.index == 1 -%}
+					:root,
+				{%- endif %}
+				.color-{{ scheme.id }} {
+					--color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+					{% if scheme.settings.background_gradient != empty %}
+						--gradient-background: {{ scheme.settings.background_gradient }};
+					{% else %}
+						--gradient-background: {{ scheme.settings.background }};
+					{% endif %}
+					--color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+					--color-shadow: {{ scheme.settings.shadow.red }},{{ scheme.settings.shadow.green }},{{ scheme.settings.shadow.blue }};
+					--color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
+					--color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
+					--color-secondary-button: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+					--color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+					--color-link: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
+					--color-badge-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+					--color-badge-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
+					--color-badge-border: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
+					--payment-terms-background-color: rgb({{ scheme.settings.background.rgb }});
+				}
+			{% endfor %}
+
+			{{ scheme_classes | prepend: 'body' }} {
+				color: rgba(var(--color-foreground), 0.75);
+				background-color: rgb(var(--color-background));
+			}
+
+			:root {
+				--font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+				--font-body-style: {{ settings.type_body_font.style }};
+				--font-body-weight: {{ settings.type_body_font.weight }};
+				--font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+
+				--font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+				--font-heading-style: {{ settings.type_header_font.style }};
+				--font-heading-weight: {{ settings.type_header_font.weight }};
+
+				--font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+				--font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
+
+				--media-padding: {{ settings.media_padding }}px;
+				--media-border-opacity: {{ settings.media_border_opacity | divided_by: 100.0 }};
+				--media-border-width: {{ settings.media_border_thickness }}px;
+				--media-radius: {{ settings.media_radius }}px;
+				--media-shadow-opacity: {{ settings.media_shadow_opacity | divided_by: 100.0 }};
+				--media-shadow-horizontal-offset: {{ settings.media_shadow_horizontal_offset }}px;
+				--media-shadow-vertical-offset: {{ settings.media_shadow_vertical_offset }}px;
+				--media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
+				--media-shadow-visible: {% if settings.media_shadow_opacity > 0 %}1{% else %}0{% endif %};
+
+				--page-width: {{ settings.page_width | divided_by: 10 }}rem;
+				--page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
+
+				--product-card-image-padding: {{ settings.card_image_padding | divided_by: 10.0 }}rem;
+				--product-card-corner-radius: {{ settings.card_corner_radius | divided_by: 10.0 }}rem;
+				--product-card-text-alignment: {{ settings.card_text_alignment }};
+				--product-card-border-width: {{ settings.card_border_thickness | divided_by: 10.0 }}rem;
+				--product-card-border-opacity: {{ settings.card_border_opacity | divided_by: 100.0 }};
+				--product-card-shadow-opacity: {{ settings.card_shadow_opacity | divided_by: 100.0 }};
+				--product-card-shadow-visible: {% if settings.card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+				--product-card-shadow-horizontal-offset: {{ settings.card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+				--product-card-shadow-vertical-offset: {{ settings.card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+				--product-card-shadow-blur-radius: {{ settings.card_shadow_blur | divided_by: 10.0 }}rem;
+
+				--collection-card-image-padding: {{ settings.collection_card_image_padding | divided_by: 10.0 }}rem;
+				--collection-card-corner-radius: {{ settings.collection_card_corner_radius | divided_by: 10.0 }}rem;
+				--collection-card-text-alignment: {{ settings.collection_card_text_alignment }};
+				--collection-card-border-width: {{ settings.collection_card_border_thickness | divided_by: 10.0 }}rem;
+				--collection-card-border-opacity: {{ settings.collection_card_border_opacity | divided_by: 100.0 }};
+				--collection-card-shadow-opacity: {{ settings.collection_card_shadow_opacity | divided_by: 100.0 }};
+				--collection-card-shadow-visible: {% if settings.collection_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+				--collection-card-shadow-horizontal-offset: {{ settings.collection_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+				--collection-card-shadow-vertical-offset: {{ settings.collection_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+				--collection-card-shadow-blur-radius: {{ settings.collection_card_shadow_blur | divided_by: 10.0 }}rem;
+
+				--blog-card-image-padding: {{ settings.blog_card_image_padding | divided_by: 10.0 }}rem;
+				--blog-card-corner-radius: {{ settings.blog_card_corner_radius | divided_by: 10.0 }}rem;
+				--blog-card-text-alignment: {{ settings.blog_card_text_alignment }};
+				--blog-card-border-width: {{ settings.blog_card_border_thickness | divided_by: 10.0 }}rem;
+				--blog-card-border-opacity: {{ settings.blog_card_border_opacity | divided_by: 100.0 }};
+				--blog-card-shadow-opacity: {{ settings.blog_card_shadow_opacity | divided_by: 100.0 }};
+				--blog-card-shadow-visible: {% if settings.blog_card_shadow_opacity > 0 %}1{% else %}0{% endif %};
+				--blog-card-shadow-horizontal-offset: {{ settings.blog_card_shadow_horizontal_offset | divided_by: 10.0 }}rem;
+				--blog-card-shadow-vertical-offset: {{ settings.blog_card_shadow_vertical_offset | divided_by: 10.0 }}rem;
+				--blog-card-shadow-blur-radius: {{ settings.blog_card_shadow_blur | divided_by: 10.0 }}rem;
+
+				--badge-corner-radius: {{ settings.badge_corner_radius | divided_by: 10.0 }}rem;
+
+				--popup-border-width: {{ settings.popup_border_thickness }}px;
+				--popup-border-opacity: {{ settings.popup_border_opacity | divided_by: 100.0 }};
+				--popup-corner-radius: {{ settings.popup_corner_radius }}px;
+				--popup-shadow-opacity: {{ settings.popup_shadow_opacity | divided_by: 100.0 }};
+				--popup-shadow-horizontal-offset: {{ settings.popup_shadow_horizontal_offset }}px;
+				--popup-shadow-vertical-offset: {{ settings.popup_shadow_vertical_offset }}px;
+				--popup-shadow-blur-radius: {{ settings.popup_shadow_blur }}px;
+
+				--drawer-border-width: {{ settings.drawer_border_thickness }}px;
+				--drawer-border-opacity: {{ settings.drawer_border_opacity | divided_by: 100.0 }};
+				--drawer-shadow-opacity: {{ settings.drawer_shadow_opacity | divided_by: 100.0 }};
+				--drawer-shadow-horizontal-offset: {{ settings.drawer_shadow_horizontal_offset }}px;
+				--drawer-shadow-vertical-offset: {{ settings.drawer_shadow_vertical_offset }}px;
+				--drawer-shadow-blur-radius: {{ settings.drawer_shadow_blur }}px;
+
+				--spacing-sections-desktop: {{ settings.spacing_sections }}px;
+				--spacing-sections-mobile: {% if settings.spacing_sections < 24 %}{{ settings.spacing_sections }}{% else %}{{ settings.spacing_sections | times: 0.7 | round | at_least: 20 }}{% endif %}px;
+
+				--grid-desktop-vertical-spacing: {{ settings.spacing_grid_vertical }}px;
+				--grid-desktop-horizontal-spacing: {{ settings.spacing_grid_horizontal }}px;
+				--grid-mobile-vertical-spacing: {{ settings.spacing_grid_vertical | divided_by: 2 }}px;
+				--grid-mobile-horizontal-spacing: {{ settings.spacing_grid_horizontal | divided_by: 2 }}px;
+
+				--text-boxes-border-opacity: {{ settings.text_boxes_border_opacity | divided_by: 100.0 }};
+				--text-boxes-border-width: {{ settings.text_boxes_border_thickness }}px;
+				--text-boxes-radius: {{ settings.text_boxes_radius }}px;
+				--text-boxes-shadow-opacity: {{ settings.text_boxes_shadow_opacity | divided_by: 100.0 }};
+				--text-boxes-shadow-visible: {% if settings.text_boxes_shadow_opacity > 0 %}1{% else %}0{% endif %};
+				--text-boxes-shadow-horizontal-offset: {{ settings.text_boxes_shadow_horizontal_offset }}px;
+				--text-boxes-shadow-vertical-offset: {{ settings.text_boxes_shadow_vertical_offset }}px;
+				--text-boxes-shadow-blur-radius: {{ settings.text_boxes_shadow_blur }}px;
+
+				--buttons-radius: {{ settings.buttons_radius }}px;
+				--buttons-radius-outset: {% if settings.buttons_radius > 0 %}{{ settings.buttons_radius | plus: settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+				--buttons-border-width: {% if settings.buttons_border_opacity > 0 %}{{ settings.buttons_border_thickness }}{% else %}0{% endif %}px;
+				--buttons-border-opacity: {{ settings.buttons_border_opacity | divided_by: 100.0 }};
+				--buttons-shadow-opacity: {{ settings.buttons_shadow_opacity | divided_by: 100.0 }};
+				--buttons-shadow-visible: {% if settings.buttons_shadow_opacity > 0 %}1{% else %}0{% endif %};
+				--buttons-shadow-horizontal-offset: {{ settings.buttons_shadow_horizontal_offset }}px;
+				--buttons-shadow-vertical-offset: {{ settings.buttons_shadow_vertical_offset }}px;
+				--buttons-shadow-blur-radius: {{ settings.buttons_shadow_blur }}px;
+				--buttons-border-offset: {% if settings.buttons_radius > 0 or settings.buttons_shadow_opacity > 0 %}0.3{% else %}0{% endif %}px;
+
+				--inputs-radius: {{ settings.inputs_radius }}px;
+				--inputs-border-width: {{ settings.inputs_border_thickness }}px;
+				--inputs-border-opacity: {{ settings.inputs_border_opacity | divided_by: 100.0 }};
+				--inputs-shadow-opacity: {{ settings.inputs_shadow_opacity | divided_by: 100.0 }};
+				--inputs-shadow-horizontal-offset: {{ settings.inputs_shadow_horizontal_offset }}px;
+				--inputs-margin-offset: {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_opacity > 0 %}{{ settings.inputs_shadow_vertical_offset | abs }}{% else %}0{% endif %}px;
+				--inputs-shadow-vertical-offset: {{ settings.inputs_shadow_vertical_offset }}px;
+				--inputs-shadow-blur-radius: {{ settings.inputs_shadow_blur }}px;
+				--inputs-radius-outset: {% if settings.inputs_radius > 0 %}{{ settings.inputs_radius | plus: settings.inputs_border_thickness }}{% else %}0{% endif %}px;
+
+				--variant-pills-radius: {{ settings.variant_pills_radius }}px;
+				--variant-pills-border-width: {{ settings.variant_pills_border_thickness }}px;
+				--variant-pills-border-opacity: {{ settings.variant_pills_border_opacity | divided_by: 100.0 }};
+				--variant-pills-shadow-opacity: {{ settings.variant_pills_shadow_opacity | divided_by: 100.0 }};
+				--variant-pills-shadow-horizontal-offset: {{ settings.variant_pills_shadow_horizontal_offset }}px;
+				--variant-pills-shadow-vertical-offset: {{ settings.variant_pills_shadow_vertical_offset }}px;
+				--variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: inherit;
+			}
+
+			html {
+				box-sizing: border-box;
+				font-size: calc(var(--font-body-scale) * 62.5%);
+				height: 100%;
+			}
+
+			body {
+				display: grid;
+				grid-template-rows: auto auto 1fr auto;
+				grid-template-columns: 100%;
+				min-height: 100%;
+				margin: 0;
+				font-size: 1.5rem;
+				letter-spacing: 0.06rem;
+				line-height: calc(1 + 0.8 / var(--font-body-scale));
+				font-family: var(--font-body-family);
+				font-style: var(--font-body-style);
+				font-weight: var(--font-body-weight);
+			}
+
+			@media screen and (min-width: 750px) {
+				body {
+					font-size: 1.6rem;
+				}
+			}
+		{% endstyle %}
+
+		{{ 'base.css' | asset_url | stylesheet_tag }}
+
+		{%- unless settings.type_body_font.system? -%}
+			<link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+		{%- endunless -%}
+		{%- unless settings.type_header_font.system? -%}
+			<link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+		{%- endunless -%}
+
+		{%- if settings.predictive_search_enabled -%}
+			<link
+				rel="stylesheet"
+				href="{{ 'component-predictive-search.css' | asset_url }}"
+				media="print"
+				onload="this.media='all'"
+			>
+		{%- endif -%}
+
+		<script>
+			document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+			if (Shopify.designMode) {
+				document.documentElement.classList.add('shopify-design-mode');
+			}
+		</script>
+
+	</head>
+
+	<body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+
+		<a href="#main" class="skip-link screen-reader-only">{{ 'accessibility.skip_to_text' | t }}</a>
+
+		{%- if settings.cart_type == 'drawer' -%}
+			{%- render 'cart-drawer' -%}
+		{%- endif -%}
+
+		{% sections 'header-group' %}
+
+		<main role="main" id="main" class="main content-for-layout focus-none">
+
+			<div class="wrap main__wrap">
+
+				{{ content_for_layout }}
+
+			</div>
+
+		</main>
+
+		{% sections 'footer-group' %}
+
+		<ul hidden>
+			<li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+			<li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+		</ul>
+
+		<script>
+			window.shopUrl = '{{ request.origin }}';
+			window.routes = {
+				cart_add_url: '{{ routes.cart_add_url }}',
+				cart_change_url: '{{ routes.cart_change_url }}',
+				cart_update_url: '{{ routes.cart_update_url }}',
+				cart_url: '{{ routes.cart_url }}',
+				predictive_search_url: '{{ routes.predictive_search_url }}',
+			};
+
+			window.cartStrings = {
+				error: `{{ 'sections.cart.cart_error' | t }}`,
+				quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`,
+			};
+
+			window.variantStrings = {
+				addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+				soldOut: `{{ 'products.product.sold_out' | t }}`,
+				unavailable: `{{ 'products.product.unavailable' | t }}`,
+				unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+			};
+
+			window.accessibilityStrings = {
+				imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+				shareSuccess: `{{ 'general.share.success_message' | t }}`,
+				pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+				playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+			};
+		</script>
+
+		{%- if settings.predictive_search_enabled -%}
+			<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+		{%- endif -%}
+
+	</body>
+
+</html>
+
+{% endcomment %}
