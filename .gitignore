@@ -11,3 +11,5 @@ Thumbs.db
 node_modules/
 package-lock.json
 *.code-workspace
+*.nova
+*.vscode
